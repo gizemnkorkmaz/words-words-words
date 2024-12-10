@@ -24,6 +24,7 @@ export default function SearchInput({
   const handleIconClick = () => {
     if (query) {
       setQuery("");
+      onSearch("");
     } else {
       onSearch(query);
     }
