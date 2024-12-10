@@ -12,6 +12,7 @@ export default function SearchInput({
   onSearch: (query: string) => void;
 }) {
   const { theme } = useTheme();
+  const isDarkMode = theme === "dark";
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -24,7 +25,6 @@ export default function SearchInput({
     if (query) {
       onSearch(query);
     }
-
     document.querySelector('input')?.select();
   };
 
@@ -37,9 +37,7 @@ export default function SearchInput({
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyPress}
         className={`p-[12px] text-sm rounded-lg w-full pr-12 pl-4 focus:outline-none transition-all duration-300 ${
-          theme === "dark"
-            ? "bg-neutral-800 text-neutral-100"
-            : "bg-neutral-100 text-black border"
+          isDarkMode ? "bg-neutral-800 text-neutral-100" : "bg-neutral-100 text-black border"
         }`}
       />
       <button

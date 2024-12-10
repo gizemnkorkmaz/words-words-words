@@ -44,8 +44,8 @@ export default function QueryDisplay({
     <div className="flex flex-col space-y-6 w-full max-w-2xl px-4 sm:px-0">
       <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">{word}</h1>
-          <p className="text-purple-500 text-lg">{phonetic}</p>
+          <h1 className="text-[52px] font-bold leading-[56px]">{word}</h1>
+          <p className="text-purple-500 text-lg italic">{phonetic}</p>
         </div>
         <div className="flex gap-2 mt-4 sm:mt-0">
           {phonetics.map((phonetic, index) =>
@@ -53,15 +53,15 @@ export default function QueryDisplay({
               <button
                 key={index}
                 onClick={() => playAudio(phonetic.audio)}
-                className="p-2 rounded-full bg-purple-300 hover:bg-purple-400 focus:ring-2 focus:ring-purple-600 transition"
+                className="p-2 rounded-full bg-purple-400 hover:bg-purple-400 focus:ring-2 focus:ring-purple-600 transition"
                 aria-label={`Play audio ${index + 1}`}
               >
                 <svg
                   viewBox="0 0 32 32"
                   width="24"
                   height="24"
-                  stroke="currentColor"
-                  fill="currentColor"
+                  stroke="#c084fc"
+                  fill="#fff"
                 >
                   <path d="M7 28a1 1 0 0 1-1-1V5a1 1 0 0 1 1.5-0.9l20 11a1 1 0 0 1 0 1.8l-20 11A1 1 0 0 1 7 28Z" />
                 </svg>
@@ -75,7 +75,7 @@ export default function QueryDisplay({
         {meanings.map((meaning, index) => (
           <div key={index} className="mb-6">
             <h2 className="text-xl font-semibold">{meaning.partOfSpeech}</h2>
-            <h3 className="text-md text-gray-500 mt-2">Meaning</h3>
+            <h3 className="text-purple-300 mt-2">Meaning</h3>
             <ul className="list-disc pl-6 space-y-2">
               {meaning.definitions.map((definition, idx) => (
                 <li key={idx}>

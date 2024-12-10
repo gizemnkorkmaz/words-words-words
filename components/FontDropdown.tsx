@@ -8,7 +8,7 @@ interface FontDropdownProps {
   onFontChange: (font: string) => void;
 }
 
-export default function FontDropdown({ font, theme, onFontChange }: FontDropdownProps) {
+const FontDropdown: React.FC<FontDropdownProps> = ({ font, theme, onFontChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -34,12 +34,14 @@ export default function FontDropdown({ font, theme, onFontChange }: FontDropdown
     };
   }, []);
 
+  const isDarkMode = theme === "dark";
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
         className={`p-3 rounded-md flex items-center gap-2 text-[12px] ${
-          theme === "dark" ? "hover:bg-gray-700 text-white" : "hover:bg-gray-100 text-black"
+          isDarkMode ? "hover:bg-gray-700 text-white" : "hover:bg-gray-100 text-black"
         }`}
       >
         <span className="font-semibold">{font}</span>
@@ -48,13 +50,13 @@ export default function FontDropdown({ font, theme, onFontChange }: FontDropdown
           alt="Font Selector"
           width={16}
           height={16}
-          className={`${theme === "dark" ? "invert" : ""}`}
+          className={isDarkMode ? "invert" : ""}
         />
       </button>
       {isOpen && (
         <div
           className={`absolute my-2 w-36 rounded-md px-2 shadow-lg z-10 ${
-            theme === "dark" ? "bg-neutral-800 opacity-90 text-white" : "bg-white text-black"
+            isDarkMode ? "bg-neutral-800 text-white" : "bg-white text-black"
           }`}
         >
           <div className="py-1">
@@ -63,7 +65,7 @@ export default function FontDropdown({ font, theme, onFontChange }: FontDropdown
                 key={fontOption}
                 onClick={() => handleFontSelect(fontOption)}
                 className={`w-full px-3 py-2 rounded-md text-left text-[12px] ${
-                  theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-100 rounded-md"
+                  isDarkMode ? "hover:bg-gray-700" : "hover:bg-gray-100"
                 }`}
               >
                 {fontOption}
@@ -74,4 +76,6 @@ export default function FontDropdown({ font, theme, onFontChange }: FontDropdown
       )}
     </div>
   );
-}
+};
+
+export default FontDropdown;
