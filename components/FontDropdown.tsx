@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 interface FontDropdownProps {
@@ -10,9 +10,10 @@ interface FontDropdownProps {
 
 export default function FontDropdown({ font, theme, onFontChange }: FontDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   const handleFontSelect = (selectedFont: string) => {
@@ -20,8 +21,21 @@ export default function FontDropdown({ font, theme, onFontChange }: FontDropdown
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
         className={`p-3 rounded-md flex items-center gap-2 text-[12px] ${
