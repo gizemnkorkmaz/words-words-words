@@ -18,6 +18,7 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [queryData, setQueryData] = useState<WordData | null>(null);
+  const [hasError, setHasError] = useState(false);
 
   const handleSearch = (search: string) => {
     setSearchTerm(search);
@@ -27,7 +28,10 @@ export default function Home() {
     if (searchTerm) {
       fetchWordData(searchTerm)
         .then((data) => setQueryData(data[0]))
-        .catch((error) => console.error("Error fetching data:", error));
+        .catch((error) => {
+          setHasError(true);
+          console.error("Error fetching data:", error)
+        });
     } else {
       setQueryData(null);
     }
@@ -43,6 +47,7 @@ export default function Home() {
         meanings={queryData?.meanings || []}
         sourceUrls={queryData?.sourceUrls || []}
         license={queryData?.license || { name: "", url: "" }}
+        hasError={hasError}
       />
     </div>
   );

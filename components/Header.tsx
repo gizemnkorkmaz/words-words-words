@@ -17,7 +17,7 @@ export default function Header() {
   };
 
   return (
-    <header className="flex flex-wrap items-center justify-between py-8 px-6 sm:px-12 lg:px-24  m-auto">
+    <header className="flex flex-wrap items-center justify-between py-8 px-6 sm:px-12 lg:px-24 m-auto">
       <Link className="flex items-center gap-2 hover:opacity-60" href="/">
       <Icon name="Book" color={theme === 'dark' ? "purple" : "black"} size="lg" />
       </Link>
