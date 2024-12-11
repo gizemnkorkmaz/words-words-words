@@ -14,15 +14,6 @@ body {
   box-sizing: border-box;
 }
 
-main {
-  flex-grow: 1;
-}
-
-footer {
-  margin-top: auto;
-}
-
-
 @media (min-width: 960px) {
   body {
     max-width: 960px; 
