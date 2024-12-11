@@ -6,7 +6,7 @@ import { useTheme } from "../context/ThemeContext";
 import ThemeToggle from "@/components/ThemeToggle";
 import FontDropdown from "@/components/FontDropdown";
 
-export default function Header() {
+export default function Header({ className }: { className?: string }){
   const { theme, toggleTheme } = useTheme();
   const [font, setFont] = useState("Sans-serif");
 
@@ -16,7 +16,7 @@ export default function Header() {
   };
 
   return (
-    <header className="flex flex-wrap items-center justify-between py-8 px-6 sm:px-12 lg:px-24 m-auto">
+    <header className={`flex flex-wrap items-center justify-between py-8 px-6 sm:px-12 lg:px-24 m-auto ${className}`}>
       <Link className="flex items-center gap-2 hover:opacity-60" href="/">
         <svg
           xmlns="http://www.w3.org/2000/svg"

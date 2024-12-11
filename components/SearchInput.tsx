@@ -1,6 +1,8 @@
 "use client";
 
+import React, { useState } from 'react';
 import { useTheme } from "../context/ThemeContext";
+import { Search, X } from 'lucide-react';
 
 export default function SearchInput({
   query,
@@ -13,6 +15,7 @@ export default function SearchInput({
 }) {
   const { theme } = useTheme();
   const isDarkMode = theme === "dark";
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -21,19 +24,23 @@ export default function SearchInput({
     }
   };
 
-  const handleIconClick = () => {
-    if (query) {
-      setQuery("");
-      onSearch("");
-    } else {
-      onSearch(query);
-    }
+  const handleSearchClick = () => {
+    onSearch(query);
     document.querySelector("input")?.select();
+  };
+
+  const handleClearClick = () => {
+    setQuery("");
+    onSearch("");
+    document.querySelector("input")?.focus();
   };
 
   const handleInputClick = (e: React.MouseEvent<HTMLInputElement>) => {
     (e.target as HTMLInputElement).select();
   };
+
+  const handleFocus = () => setIsFocused(true);
+  const handleBlur = () => setIsFocused(false);
 
   return (
     <div className="flex items-center justify-center w-full px-4 relative max-w-[650px]">
@@ -44,45 +51,37 @@ export default function SearchInput({
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyPress}
         onClick={handleInputClick}
-        className={`p-[12px] text-sm rounded-lg w-full pr-12 pl-4 focus:outline-none transition-all duration-300 ${
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        className={`p-[12px] text-sm rounded-lg w-full pr-24 pl-4 focus:outline-none transition-all duration-300 ${
           isDarkMode ? "bg-neutral-800 text-neutral-100" : "bg-neutral-100 text-black border"
         }`}
       />
-      <button
-        onClick={handleIconClick}
-        className="absolute right-6 p-2 rounded-full focus:outline-none focus:ring-2 transition-all bg-purple-400"
-        aria-label={query ? "Clear search" : "Search"}
-      >
-        {query ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="white"
-            className="w-5 h-5"
+      <div className="absolute right-6 flex items-center space-x-2">
+        {query && (
+          <button
+            onClick={handleClearClick}
+            className={`p-2 rounded-full focus:outline-none focus:ring-2 transition-all 
+              ${isDarkMode ? "hover:bg-neutral-700" : "hover:bg-neutral-200"}
+              ${isFocused ? "opacity-100" : "opacity-70"}`}
+            aria-label="Clear search"
           >
-            <path
-              fillRule="evenodd"
-              d="M6.225 6.225a.75.75 0 011.06 0L12 10.939l4.715-4.714a.75.75 0 111.06 1.06L13.061 12l4.714 4.715a.75.75 0 01-1.06 1.06L12 13.061l-4.715 4.714a.75.75 0 01-1.06-1.06L10.939 12 6.225 7.285a.75.75 0 010-1.06z"
-              clipRule="evenodd"
-            />
-          </svg>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="white"
-            className="w-5 h-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M11 17a6 6 0 100-12 6 6 0 000 12zm4.222-1.222L21 20"
-            />
-          </svg>
+            <X className="w-5 h-5" stroke={isDarkMode ? "white" : "black"} />
+          </button>
         )}
-      </button>
+        <button
+          onClick={handleSearchClick}
+          className={`p-2 rounded-full focus:outline-none focus:ring-2 transition-all 
+            ${query ? "bg-purple-400" : (isDarkMode ? "hover:bg-neutral-700" : "hover:bg-neutral-200")}
+            ${isFocused ? "opacity-100" : "opacity-90"}`}
+          aria-label="Perform search"
+        >
+          <Search 
+            className="w-5 h-5" 
+            stroke={query ? "white" : (isDarkMode ? "white" : "black")} 
+          />
+        </button>
+      </div>
     </div>
   );
 }
