@@ -32,8 +32,8 @@ export default function QueryDisplay() {
   }  
 
   return (
-    <div className="flex flex-col space-y-6 w-full max-w-2xl px-4">
-      <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full">
+    <div className="flex flex-col space-y-6 max-w-2xl px-4">
+      <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
         <div>
           <h1 className="text-[52px] font-bold leading-[56px]">{word}</h1>
           <p className="text-purple-500 text-lg italic">{phonetic}</p>
