@@ -1,43 +1,34 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useDictionary } from "@/context/DictionaryContext";
 import { fetchWordData } from "@/lib/api/fetchWord";
 import SearchInput from "@/components/SearchInput";
 import QueryDisplay from "@/components/QueryDisplay";
 
-interface WordData {
-  word: string;
-  phonetic: string;
-  phonetics: { text: string; audio: string }[];
-  meanings: { partOfSpeech: string; definitions: { definition: string; example: string }[] }[];
-  sourceUrls: string[];
-  license: { name: string; url: string };
-}
-
 export default function Home() {
-  const [query, setQuery] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [queryData, setQueryData] = useState<WordData | null>(null);
-  const [hasError, setHasError] = useState(false);
-
-  const handleSearch = (search: string) => {
-    setSearchTerm(search);
-  };
-
-  const clearSearch = () => {
-    setQuery("");
-    setSearchTerm("");
-    setQueryData(null);
-    setHasError(false);
-  };
+  const { 
+    query, 
+    setQuery, 
+    searchTerm, 
+    setSearchTerm, 
+    queryData, 
+    hasError,
+    setHasError,
+    setQueryData,
+  } = useDictionary();
 
   useEffect(() => {
     if (searchTerm) {
       fetchWordData(searchTerm)
-        .then((data) => setQueryData(data[0]))
+        .then((data) => {
+          setHasError(false);
+          setQueryData(data[0]);
+        })
         .catch((error) => {
-          clearSearch();
-          console.error("Error fetching data:", error)
+          setQueryData(null);
+          setHasError(true);
+          console.error("Error fetching data:", error);
         });
     } else {
       setQueryData(null);
@@ -46,7 +37,14 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center p-4 space-y-4">
-      <SearchInput query={query} setQuery={setQuery} onSearch={handleSearch} />
+      <SearchInput 
+        query={query} 
+        setQuery={setQuery} 
+        onSearch={(search) => {
+          setHasError(false);
+          setSearchTerm(search);
+        }} 
+      />
       <QueryDisplay
         word={queryData?.word || ""}
         phonetic={queryData?.phonetic || ""}

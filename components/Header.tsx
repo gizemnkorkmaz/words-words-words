@@ -1,13 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { useTheme } from "../context/ThemeContext";
+import { useDictionary } from "../context/DictionaryContext";
 import ThemeToggle from "@/components/ThemeToggle";
 import FontDropdown from "@/components/FontDropdown";
 
 export default function Header({ className }: { className?: string }){
   const { theme, toggleTheme } = useTheme();
+  const { clearSearch } = useDictionary();
   const [font, setFont] = useState("Sans-serif");
 
   const handleFontChange = (selectedFont: string) => {
@@ -17,7 +18,7 @@ export default function Header({ className }: { className?: string }){
 
   return (
     <header className={`flex flex-wrap items-center justify-between py-8 px-6 sm:px-12 lg:px-24 m-auto ${className}`}>
-      <Link className="flex items-center gap-2 hover:opacity-60" href="/">
+      <div className="flex items-center gap-2 hover:opacity-60 cursor-pointer" onClick={clearSearch}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -32,7 +33,7 @@ export default function Header({ className }: { className?: string }){
             strokeWidth="2.5"
           />
         </svg>
-      </Link>
+      </div>
       <div className="flex gap-4 items-center">
         <FontDropdown
           theme={theme}

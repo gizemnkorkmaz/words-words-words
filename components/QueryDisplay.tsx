@@ -1,27 +1,18 @@
-import React from "react";
+import { useDictionary } from "@/context/DictionaryContext";
 
-interface QueryDisplayProps {
-  word: string;
-  phonetic: string;
-  phonetics: { text: string; audio: string }[];
-  meanings: {
-    partOfSpeech: string;
-    definitions: { definition: string; example: string }[];
-  }[];
-  sourceUrls: string[];
-  license: { name: string; url: string };
-  hasError: boolean;
-}
 
-export default function QueryDisplay({
-  word,
-  phonetic,
-  phonetics,
-  meanings,
-  sourceUrls,
-  license,
-  hasError,
-}: QueryDisplayProps) {
+export default function QueryDisplay() {
+  const { queryData, hasError } = useDictionary();
+
+  const { word, phonetic, phonetics, meanings, sourceUrls, license } = queryData || {
+    word: "",
+    phonetic: "",
+    phonetics: [],
+    meanings: [],
+    sourceUrls: [],
+    license: { name: "", url: "" },
+  };
+  
   const playAudio = (audioUrl: string) => {
     const audio = new Audio(audioUrl);
     audio.play();

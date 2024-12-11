@@ -3,6 +3,7 @@ import "./globals.css";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { ThemeProvider } from "../context/ThemeContext";
+import { DictionaryProvider } from "@/context/DictionaryContext";
 
 export const metadata: Metadata = {
   title: "Next Dictionary",
@@ -18,9 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeProvider>
-          <Header />
-          {children}
-          <Footer />
+          <DictionaryProvider>
+            <Header />
+            {children}
+            <Footer />
+          </DictionaryProvider>
         </ThemeProvider>
       </body>
     </html>
