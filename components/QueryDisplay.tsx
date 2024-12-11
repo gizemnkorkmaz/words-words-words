@@ -29,16 +29,16 @@ export default function QueryDisplay({
 
   if (hasError) {
     return (
-      <div className="flex flex-col items-center justify-center w-full h-full text-center space-y-2">
-        <h1 className="text-2xl font-bold text-gray-800 text-[14px]">
+      <div className="flex flex-col items-center justify-center w-full h-full text-center px-4 space-y-4">
+        <h1 className="text-lg sm:text-xl font-bold">
           We couldn&apos;t find any matches for your search.
         </h1>
-        <p className="text-gray-600 text-[12px]">
+        <p className="text-sm sm:text-base">
           Please double-check your spelling or try searching for a different word.
         </p>
       </div>
     );
-  }
+  }  
 
   return (
     <div className="flex flex-col space-y-6 w-full max-w-2xl px-4 sm:px-0">

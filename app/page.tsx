@@ -24,12 +24,19 @@ export default function Home() {
     setSearchTerm(search);
   };
 
+  const clearSearch = () => {
+    setQuery("");
+    setSearchTerm("");
+    setQueryData(null);
+    setHasError(false);
+  };
+
   useEffect(() => {
     if (searchTerm) {
       fetchWordData(searchTerm)
         .then((data) => setQueryData(data[0]))
         .catch((error) => {
-          setHasError(true);
+          clearSearch();
           console.error("Error fetching data:", error)
         });
     } else {

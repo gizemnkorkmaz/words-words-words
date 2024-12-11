@@ -19,17 +19,20 @@ export default function SearchInput({
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       onSearch(query);
-      e.currentTarget.blur(); // Dismiss keyboard
-      e.currentTarget.select(); // Select text
+      
+      if (e.currentTarget) {
+        e.currentTarget.blur();
+      }
     }
   };
   
   const handleSearchClick = () => {
     onSearch(query);
     const inputElement = document.querySelector("input") as HTMLInputElement;
-    inputElement?.blur(); // Dismiss keyboard
-    inputElement?.select(); // Select text
+    inputElement?.blur(); 
+    inputElement?.select(); 
   };
 
   const handleClearClick = () => {
