@@ -36,7 +36,7 @@ const FooterLink = ({ href, src, alt, children }: FooterLinkProps) => {
 
 export default function Footer({ className }: { className?: string }) {
   return (
-    <footer className={`fixed bottom-0 left-0 right-0 bg-white dark:bg-neutral-800 flex gap-6 items-center justify-center w-full p-4 z-50 opacity-95 ${className}`}>
+    <footer className={`fixed bottom-0 left-0 right-0 bg-white dark:bg-neutral-800 flex gap-6 items-center justify-center w-full p-2 z-50 opacity-95 ${className}`}>
       <FooterLink
         href="https://github.com/gizemnkorkmaz"
         src="/github.svg"

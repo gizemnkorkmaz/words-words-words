@@ -28,7 +28,10 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ theme, toggleTheme }) => {
           className="absolute left-1 top-1 sm:w-4 sm:h-4 w-3 h-3 bg-white rounded-full transition-transform duration-300 transform sm:peer-checked:translate-x-6 peer-checked:translate-x-3"
         />
       </label>
-      <div className="w-4 h-4 sm:w-6 sm:h-6 flex items-center justify-center">
+      <div
+        className="w-4 h-4 sm:w-6 sm:h-6 flex items-center justify-center cursor-pointer"
+        onClick={toggleTheme}
+      >
         {isDarkMode ? (
           <Moon className="text-purple-600" size="100%" />
         ) : (

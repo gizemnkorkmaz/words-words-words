@@ -19,18 +19,18 @@ export default function Header({ className }: { className?: string }) {
 
   return (
     <header
-      className={`flex items-center mt-2 justify-between py-4 px-4 sm:px-8 md:px-12 lg:px-16 w-full overflow-x-hidden ${className}`}
+      className={`flex items-center mt-2 justify-between py-4 px-4 sm:px-8 md:px-12 lg:px-16  ${className}`}
     >
       <div 
         className="flex items-center gap-2 hover:opacity-60 cursor-pointer min-w-0" 
         onClick={clearSearch}
       >
-        <Book size={24} className="flex-shrink-0" />
+        <Book size={24}/>
         <h1 className="text-xs sm:text-sm md:text-base font-bold italic truncate">
           words, words, words
         </h1>
       </div>
-      <div className="flex gap-4 items-center flex-shrink-0">
+      <div className="flex gap-4 items-center">
         <FontDropdown
           theme={theme}
           font={font}
