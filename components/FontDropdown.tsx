@@ -37,7 +37,7 @@ const FontDropdown: React.FC<FontDropdownProps> = ({ font, theme, onFontChange }
   const isDarkMode = theme === "dark";
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
         className={`py-1 px-2 rounded-md flex items-center gap-2 text-[8px] sm:text-xs ${

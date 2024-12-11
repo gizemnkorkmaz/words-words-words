@@ -14,9 +14,9 @@ export default function QueryDisplay() {
   };
 
   function getRegionFromUrl(url: string) {
-    const match = url.match(/-(uk|us)\.mp3$/);
+    const match = url.match(/-(uk|us|au)\.mp3$/);
     return match ? match[1].toUpperCase() : null;
-  }
+  }  
 
   const playAudio = (audioUrl: string) => {
     const audio = new Audio(audioUrl);
