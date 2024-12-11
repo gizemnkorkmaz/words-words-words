@@ -32,7 +32,7 @@ export default function Home() {
   }, [searchTerm]);
 
   return (
-    <div className="flex flex-col items-center p-4 space-y-4">
+    <div className="flex flex-grow flex-col items-center p-4 space-y-4">
       <SearchInput
         onSearch={(search: string) => {
           setHasError(false);

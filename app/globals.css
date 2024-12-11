@@ -7,7 +7,10 @@ body {
   max-width: 960px;
   margin: 0 auto;
   transition: background-color 0.3s, color 0.3s;
-
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @layer base {
