@@ -33,14 +33,14 @@ export default function Home() {
   }, [searchTerm]);
 
   return (
-    <div className="flex flex-grow flex-col items-center p-4 space-y-4 max-w-full overflow-x-hidden">
+    <div className="flex flex-grow flex-col items-center p-4 m-4 space-y-4 max-w-full overflow-x-hidden">
       <SearchInput
         onSearch={(search: string) => {
           setHasError(false);
           setSearchTerm(search);
         }}
       />
-      { searchTerm ? <QueryDisplay /> : <Image src="/shakespeare.webp" alt="shakespeare" width={400} height={400} className="sm:w-[400px] sm:h-[200px] w-[200px] h-[100px]" /> }
+      { searchTerm ? <QueryDisplay /> : <Image src="/shakespeare.webp" alt="shakespeare" width={600} height={300} className="sm:w-[400px] sm:h-[200px] w-[300px] h-[150px] rounded-md" /> }
     </div>
   );
 }
