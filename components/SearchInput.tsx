@@ -44,7 +44,7 @@ export default function SearchInput({ onSearch }: { onSearch: (search: string) =
   const handleBlur = () => setIsFocused(false);
 
   return (
-    <div className="flex items-center justify-center w-full px-4 relative max-w-[650px] mt-9">
+    <div className="flex items-center justify-center w-full px-4 relative max-w-[650px] my-9">
       <input
         type="text"
         placeholder="Search"

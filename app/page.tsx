@@ -5,6 +5,7 @@ import { useDictionary } from "@/context/DictionaryContext";
 import { fetchWordData } from "@/lib/api/fetchWord";
 import SearchInput from "@/components/SearchInput";
 import QueryDisplay from "@/components/QueryDisplay";
+import Image from "next/image";
 
 export default function Home() {
   const {
@@ -12,6 +13,7 @@ export default function Home() {
     setSearchTerm,
     setHasError,
     setQueryData,
+    query,
   } = useDictionary();
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export default function Home() {
           setSearchTerm(search);
         }}
       />
-      <QueryDisplay />
+      { query ? <QueryDisplay /> : <Image src="/shakespeare.webp" alt="shakespeare" width={400} height={400} className="sm:w-[400px] sm:h-[200px] w-[200px] h-[100px]" /> }
     </div>
   );
 }
