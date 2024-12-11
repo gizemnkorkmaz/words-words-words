@@ -19,11 +19,14 @@ export default function Header({ className }: { className?: string }) {
 
   return (
     <header
-      className={`flex flex-wrap items-center justify-between py-4 px-6 sm:px-8 md:px-12 lg:px-16 ${className}`}
+      className={`flex flex-wrap items-center justify-between py-4 px-4 sm:px-8 md:px-12 lg:px-16 w-full ${className}`}
     >
-      <div className="flex items-center gap-2 hover:opacity-60 cursor-pointer" onClick={clearSearch}>
+      <div 
+        className="flex items-center gap-2 hover:opacity-60 cursor-pointer" 
+        onClick={clearSearch}
+      >
         <Book size={24} />
-        <h1 className="text-xs sm:text-sm md:text-base font-bold italic text-[10px]">
+        <h1 className="text-xs sm:text-sm md:text-base font-bold italic">
           words, words, words
         </h1>
       </div>

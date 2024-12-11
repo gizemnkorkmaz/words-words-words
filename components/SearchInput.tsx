@@ -47,7 +47,7 @@ export default function SearchInput({ onSearch }: { onSearch: (search: string) =
     <div className="flex items-center justify-center w-full px-4 relative max-w-[650px] my-9">
       <input
         type="text"
-        placeholder="Search"
+        placeholder="words! mere words!"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyPress}
