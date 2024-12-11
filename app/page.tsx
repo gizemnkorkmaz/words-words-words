@@ -13,7 +13,6 @@ export default function Home() {
     setSearchTerm,
     setHasError,
     setQueryData,
-    query,
   } = useDictionary();
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function Home() {
           setSearchTerm(search);
         }}
       />
-      { query ? <QueryDisplay /> : <Image src="/shakespeare.webp" alt="shakespeare" width={400} height={400} className="sm:w-[400px] sm:h-[200px] w-[200px] h-[100px]" /> }
+      { searchTerm ? <QueryDisplay /> : <Image src="/shakespeare.webp" alt="shakespeare" width={400} height={400} className="sm:w-[400px] sm:h-[200px] w-[200px] h-[100px]" /> }
     </div>
   );
 }
