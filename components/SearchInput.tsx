@@ -1,20 +1,15 @@
 "use client";
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTheme } from "../context/ThemeContext";
+import { useDictionary } from "../context/DictionaryContext";
 import { Search, X } from 'lucide-react';
 
-export default function SearchInput({
-  query,
-  setQuery,
-  onSearch,
-}: {
-  query: string;
-  setQuery: (value: string) => void;
-  onSearch: (query: string) => void;
-}) {
+export default function SearchInput({ onSearch }: { onSearch: (search: string) => void }) {
   const { theme } = useTheme();
   const isDarkMode = theme === "dark";
+
+  const { query, setQuery, hasError } = useDictionary();
   const [isFocused, setIsFocused] = useState(false);
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -79,8 +74,11 @@ export default function SearchInput({
           onClick={handleSearchClick}
           className={`p-2 rounded-full focus:outline-none focus:ring-2 transition-all 
             ${query ? "bg-purple-400" : (isDarkMode ? "hover:bg-neutral-700" : "hover:bg-neutral-200")}
-            ${isFocused ? "opacity-100" : "opacity-90"}`}
+            ${isFocused ? "opacity-100" : "opacity-90"}
+            ${hasError ? "cursor-not-allowed opacity-30" : "cursor-pointer"}
+            `}
           aria-label="Perform search"
+          disabled={!query || hasError}
         >
           <Search 
             className="w-5 h-5" 

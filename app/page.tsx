@@ -7,13 +7,9 @@ import SearchInput from "@/components/SearchInput";
 import QueryDisplay from "@/components/QueryDisplay";
 
 export default function Home() {
-  const { 
-    query, 
-    setQuery, 
-    searchTerm, 
-    setSearchTerm, 
-    queryData, 
-    hasError,
+  const {
+    searchTerm,
+    setSearchTerm,
     setHasError,
     setQueryData,
   } = useDictionary();
@@ -37,23 +33,13 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center p-4 space-y-4">
-      <SearchInput 
-        query={query} 
-        setQuery={setQuery} 
-        onSearch={(search) => {
+      <SearchInput
+        onSearch={(search: string) => {
           setHasError(false);
           setSearchTerm(search);
-        }} 
+        }}
       />
-      <QueryDisplay
-        word={queryData?.word || ""}
-        phonetic={queryData?.phonetic || ""}
-        phonetics={queryData?.phonetics || []}
-        meanings={queryData?.meanings || []}
-        sourceUrls={queryData?.sourceUrls || []}
-        license={queryData?.license || { name: "", url: "" }}
-        hasError={hasError}
-      />
+      <QueryDisplay />
     </div>
   );
 }
