@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 interface FontDropdownProps {
   font: string;
@@ -40,22 +40,16 @@ const FontDropdown: React.FC<FontDropdownProps> = ({ font, theme, onFontChange }
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className={`p-3 rounded-md flex items-center gap-2 text-[12px] ${
+        className={`py-1 px-2 rounded-md flex items-center gap-2 text-[12px] ${
           isDarkMode ? "hover:bg-gray-700 text-white" : "hover:bg-gray-100 text-black"
         }`}
       >
         <span className="font-semibold">{font}</span>
-        <Image
-          src="/chevron-down.svg"
-          alt="Font Selector"
-          width={16}
-          height={16}
-          className={isDarkMode ? "invert" : ""}
-        />
+        <ChevronDown size={16} className={isDarkMode ? 'text-white' : ''} />
       </button>
       {isOpen && (
         <div
-          className={`absolute my-2 w-36 rounded-md px-2 shadow-lg z-10 ${
+          className={`absolute my-2 w-36 rounded-md px-2 py-1 shadow-lg z-10 ${
             isDarkMode ? "bg-neutral-800 text-white" : "bg-white text-black"
           }`}
         >

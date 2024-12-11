@@ -6,7 +6,7 @@ import { ThemeProvider } from "../context/ThemeContext";
 import { DictionaryProvider } from "@/context/DictionaryContext";
 
 export const metadata: Metadata = {
-  title: "Next Dictionary",
+  title: "words, words, words",
   description: "A dictionary app built with Next.js",
 };
 
