@@ -12,7 +12,12 @@ export default function QueryDisplay() {
     sourceUrls: [],
     license: { name: "", url: "" },
   };
-  
+
+  function getRegionFromUrl(url: string) {
+    const match = url.match(/-(uk|us)\.mp3$/);
+    return match ? match[1].toUpperCase() : null;
+  }
+
   const playAudio = (audioUrl: string) => {
     const audio = new Audio(audioUrl);
     audio.play();
@@ -38,9 +43,10 @@ export default function QueryDisplay() {
           <h1 className="text-[52px] font-bold leading-[56px]">{word}</h1>
           <p className="text-purple-500 text-lg italic">{phonetic}</p>
         </div>
-        <div className="flex gap-2 mt-4 sm:mt-0">
+        <div className="flex gap-4 mt-4 sm:mt-0">
           {phonetics.map((phonetic, index) =>
             phonetic.audio ? (
+              <div className="flex items-center gap-2" key={index}>
               <button
                 key={index}
                 onClick={() => playAudio(phonetic.audio)}
@@ -57,6 +63,8 @@ export default function QueryDisplay() {
                   <path d="M7 28a1 1 0 0 1-1-1V5a1 1 0 0 1 1.5-0.9l20 11a1 1 0 0 1 0 1.8l-20 11A1 1 0 0 1 7 28Z" />
                 </svg>
               </button>
+              <p className="text-purple-500 text-sm italic">{getRegionFromUrl(phonetic.audio)}</p>
+              </div>
             ) : null
           )}
         </div>
