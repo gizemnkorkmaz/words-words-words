@@ -7,7 +7,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import FontDropdown from "@/components/FontDropdown";
 import { Book } from "lucide-react";
 
-export default function Header({ className }: { className?: string }){
+export default function Header({ className }: { className?: string }) {
   const { theme, toggleTheme } = useTheme();
   const { clearSearch } = useDictionary();
   const [font, setFont] = useState("Sans-serif");
@@ -18,10 +18,14 @@ export default function Header({ className }: { className?: string }){
   };
 
   return (
-    <header className={`flex flex-wrap items-center justify-between py-8 px-6 sm:px-12 lg:px-24 ${className}`}>
+    <header
+      className={`flex flex-wrap items-center justify-between py-4 px-6 sm:px-8 md:px-12 lg:px-16 overflow-x-auto ${className}`}
+    >
       <div className="flex items-center gap-2 hover:opacity-60 cursor-pointer" onClick={clearSearch}>
         <Book size={24} />
-        <h1 className="sm:text-xs font-bold italic text-[8px]">words, words, words</h1>
+        <h1 className="text-xs sm:text-sm md:text-base font-bold italic text-[10px]">
+          words, words, words
+        </h1>
       </div>
       <div className="flex gap-4 items-center">
         <FontDropdown
