@@ -1,37 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Words Words Words
+
+![shakespeare](/public/shakespeare.webp)
+
+
+**Words Words Words** is a minimal dictionary app built with Next.js 15. Inspired by Shakespeare's *Hamlet*—"Words, words, words," this project lets you explore the meanings of words without unnecessary frills. Think of it as the dictionary equivalent of a tight five at the Globe Theatre.
+
+## Features
+
+- Look up word definitions faster than you can say "wherefore art thou."
+- Designed to work on any device—yes, even your ancient iPhone SE.
+- Built with Next.js 15 for blistering speed and dramatic flair.
 
 ## Getting Started
 
-First, run the development server:
+Ready to dive into the world of words? Here's how to get started:
 
+### Prerequisites
+
+You'll need the following (quills and parchment optional):
+
+- [Node.js](https://nodejs.org/) (version 18 or higher recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) (your trusty package manager)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/gizemnkorkmaz/words-words-words.git
+   cd words-words-words
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Create an `.env.local` file for environment variables if you're feeling fancy.
+
+### Running the Project
+
+Kick off the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open your browser and bask in your brilliance at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+When you're ready to dazzle the masses, build for production:
+```bash
+npm run build
+# or
+yarn build
+```
 
-## Learn More
+Then, launch the server:
+```bash
+npm start
+# or
+yarn start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Got ideas? Found a bug? "To code, or not to code?"—the answer is always *to code*. Open a pull request or issue.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# next-dictionary
+Use **Words Words Words** and let the Bard inspire your lexiconic adventures! 🚀
+
